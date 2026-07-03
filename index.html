@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ugochi Nwosu — Executive Assistant</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --orange: #FF6B1A;
+    --orange-light: #FFF0E8;
+    --orange-mid: #FF8C45;
+    --dark: #0D0D0D;
+    --dark-2: #1A1A1A;
+    --dark-3: #2A2A2A;
+    --mid: #555;
+    --light: #F7F7F5;
+    --white: #ffffff;
+    --border: rgba(0,0,0,0.08);
+    --font-display: 'Nunito', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  body { font-family: var(--font-body); background: var(--white); color: var(--dark); line-height: 1.6; font-size: 15px; }
+
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .nav-logo { font-family: var(--font-display); font-size: 18px; font-weight: 900; letter-spacing: -0.2px; color: var(--dark); }
+  .nav-logo span { color: var(--orange); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 500; color: var(--mid); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--orange); }
+  .nav-cta { background: var(--orange); color: var(--white) !important; padding: 8px 18px; border-radius: 6px; font-size: 13px !important; }
+
+  section { padding: 80px 5%; }
+
+  .hero { padding: 100px 5% 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; min-height: 90vh; }
+  .hero-tag { display: inline-block; background: var(--orange-light); color: var(--orange); font-size: 12px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; padding: 6px 14px; border-radius: 4px; margin-bottom: 20px; }
+
+  h1 { font-family: var(--font-display); font-size: clamp(38px, 5vw, 56px); font-weight: 900; line-height: 1.1; letter-spacing: -0.5px; color: var(--dark); margin-bottom: 20px; }
+  h1 .accent { color: var(--orange); }
+  h2 { font-family: var(--font-display); font-size: clamp(26px, 3.5vw, 38px); font-weight: 800; line-height: 1.15; letter-spacing: -0.3px; margin-bottom: 16px; }
+  h3 { font-family: var(--font-display); font-weight: 800; }
+  h4 { font-family: var(--font-display); font-weight: 700; }
+
+  .hero-sub { font-size: 16px; color: var(--mid); line-height: 1.7; max-width: 440px; margin-bottom: 36px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary { background: var(--orange); color: var(--white); padding: 13px 26px; border-radius: 7px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+  .btn-primary:hover { background: var(--orange-mid); transform: translateY(-1px); }
+  .btn-secondary { background: transparent; color: var(--dark); padding: 13px 26px; border-radius: 7px; font-size: 14px; font-weight: 600; text-decoration: none; border: 1.5px solid var(--border); transition: border-color 0.2s; }
+  .btn-secondary:hover { border-color: var(--dark); }
+
+  .hero-card { background: var(--light); border-radius: 16px; padding: 36px; }
+  .hero-avatar { width: 64px; height: 64px; border-radius: 50%; background: var(--orange); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 900; font-size: 22px; color: var(--white); margin-bottom: 16px; }
+  .hero-card h3 { font-size: 18px; margin-bottom: 4px; }
+  .hero-card p { font-size: 13px; color: var(--mid); margin-bottom: 24px; }
+
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
+  .stat-box { background: var(--white); border-radius: 10px; padding: 16px; border: 1px solid var(--border); }
+  .stat-num { font-family: var(--font-display); font-size: 26px; font-weight: 900; color: var(--dark); line-height: 1; margin-bottom: 4px; }
+  .stat-num span { color: var(--orange); }
+  .stat-label { font-size: 11px; color: var(--mid); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  .ai-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--dark); color: var(--white); font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: 20px; margin-top: 16px; }
+  .ai-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); }
+
+  .section-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--orange); margin-bottom: 12px; }
+  .section-intro { font-size: 16px; color: var(--mid); max-width: 560px; line-height: 1.7; margin-bottom: 52px; }
+
+  .skills-bg { background: var(--light); }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+  .skill-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 20px; transition: border-color 0.2s, transform 0.2s; }
+  .skill-card:hover { border-color: var(--orange); transform: translateY(-2px); }
+  .skill-icon { width: 38px; height: 38px; background: var(--orange-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; font-size: 18px; }
+  .skill-card h4 { font-size: 13px; margin-bottom: 4px; }
+  .skill-card p { font-size: 12px; color: var(--mid); line-height: 1.5; }
+
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+  .project-card { background: var(--light); border-radius: 14px; overflow: hidden; transition: transform 0.2s; }
+  .project-card:hover { transform: translateY(-3px); }
+  .project-thumb { height: 180px; display: flex; align-items: center; justify-content: center; font-size: 40px; }
+  .thumb-ops { background: #FFF0E8; }
+  .thumb-ai { background: #0D0D0D; }
+  .thumb-pm { background: #E8F4FF; }
+  .thumb-code { background: #E8FFE8; }
+  .project-body { padding: 22px; }
+  .project-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; color: var(--orange); background: var(--orange-light); padding: 3px 10px; border-radius: 4px; margin-bottom: 10px; }
+  .project-tag.dark { background: var(--dark-3); color: #ccc; }
+  .project-tag.ongoing { background: #E8FFE8; color: #2a7a2a; }
+  .project-card h3 { font-size: 17px; margin-bottom: 8px; line-height: 1.3; }
+  .project-card p { font-size: 13px; color: var(--mid); line-height: 1.6; margin-bottom: 16px; }
+  .project-tools { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tool-pill { font-size: 11px; font-weight: 500; color: var(--dark); background: var(--white); border: 1px solid var(--border); padding: 3px 10px; border-radius: 20px; }
+
+  .ongoing-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+  .ongoing-dot { width: 7px; height: 7px; border-radius: 50%; background: #2a7a2a; animation: pulse 1.8s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+  .ongoing-text { font-size: 11px; font-weight: 600; color: #2a7a2a; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  .exp-timeline { max-width: 800px; }
+  .exp-item { display: grid; grid-template-columns: 160px 1fr; gap: 32px; padding: 36px 0; border-bottom: 1px solid var(--border); }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-date { font-size: 12px; color: var(--mid); font-weight: 500; padding-top: 4px; }
+  .exp-role { font-family: var(--font-display); font-size: 17px; font-weight: 800; margin-bottom: 2px; }
+  .exp-company { font-size: 13px; color: var(--orange); font-weight: 600; margin-bottom: 12px; }
+  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .exp-bullets li { font-size: 13px; color: var(--mid); line-height: 1.6; padding-left: 16px; position: relative; }
+  .exp-bullets li::before { content: ''; position: absolute; left: 0; top: 9px; width: 5px; height: 5px; border-radius: 50%; background: var(--orange); }
+
+  .tools-section { background: var(--dark); color: var(--white); }
+  .tools-section h2 { color: var(--white); }
+  .tools-section .section-label { color: var(--orange); }
+  .tools-section .section-intro { color: rgba(255,255,255,0.55); }
+  .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
+  .tool-card { background: var(--dark-2); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 16px; text-align: center; transition: border-color 0.2s; }
+  .tool-card:hover { border-color: var(--orange); }
+  .tool-card .t-icon { font-size: 24px; margin-bottom: 8px; }
+  .tool-card .t-name { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.85); }
+  .tool-card .t-cat { font-size: 10px; color: rgba(255,255,255,0.35); margin-top: 2px; }
+
+  .contact-bg { background: var(--orange); color: var(--white); text-align: center; }
+  .contact-bg h2 { color: var(--white); }
+  .contact-sub { font-size: 17px; color: rgba(255,255,255,0.8); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+  .contact-btn { display: inline-block; background: var(--white); color: var(--orange); padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 700; text-decoration: none; transition: transform 0.15s; }
+  .contact-btn:hover { transform: translateY(-2px); }
+
+  footer { background: var(--dark); color: rgba(255,255,255,0.4); text-align: center; font-size: 12px; padding: 24px; }
+  footer span { color: var(--orange); }
+
+  @media (max-width: 700px) {
+    .hero { grid-template-columns: 1fr; padding: 60px 5% 40px; }
+    .exp-item { grid-template-columns: 1fr; gap: 8px; }
+    nav .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Ugochi<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div>
+    <div class="hero-tag">Available for hire · Remote</div>
+    <h1>Executive<br>Assistant <span class="accent">built</span><br>different.</h1>
+    <p class="hero-sub">I have 5+ years in tech, spanning product design and executive support. My design background sharpened how I think and operate. I handle scheduling, correspondence, documentation, and cross-team coordination — with AI tools baked into how I work.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">View my work</a>
+      <a href="#contact" class="btn-secondary">Let's talk</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-avatar">UN</div>
+    <h3>Ugochi Nwosu</h3>
+    <p>Executive Assistant · Lagos, Nigeria · Open to remote</p>
+    <div style="border-top: 1px solid var(--border); padding-top: 20px;">
+      <div class="stat-grid">
+        <div class="stat-box"><div class="stat-num">5<span>+</span></div><div class="stat-label">Years in tech</div></div>
+        <div class="stat-box"><div class="stat-num">4</div><div class="stat-label">Companies served</div></div>
+        <div class="stat-box"><div class="stat-num">C<span>-</span>Suite</div><div class="stat-label">Executive level</div></div>
+        <div class="stat-box"><div class="stat-num"><span>AI</span></div><div class="stat-label">Native workflow</div></div>
+      </div>
+    </div>
+    <div class="ai-badge"><div class="ai-dot"></div> Claude AI · ChatGPT · Gemini</div>
+  </div>
+</div>
+
+<section id="skills" class="skills-bg">
+  <div class="section-label">What I bring</div>
+  <h2>Skills that run the show</h2>
+  <p class="section-intro">The overlap between design thinking and executive operations is where I live. I organize information the way a good designer organizes a product — with the end user in mind.</p>
+  <div class="skills-grid">
+    <div class="skill-card"><div class="skill-icon">📅</div><h4>Executive Scheduling</h4><p>Calendar management across competing priorities, time zones, and stakeholders.</p></div>
+    <div class="skill-card"><div class="skill-icon">✉️</div><h4>Correspondence</h4><p>Inbox management, stakeholder communication, and written briefs that land.</p></div>
+    <div class="skill-card"><div class="skill-icon">📋</div><h4>Executive Briefings</h4><p>Research, synthesis, and documentation for senior leadership and board prep.</p></div>
+    <div class="skill-card"><div class="skill-icon">⚙️</div><h4>Operational Systems</h4><p>SOPs, workflow design, and process documentation for distributed teams.</p></div>
+    <div class="skill-card"><div class="skill-icon">🤝</div><h4>C-Suite Stakeholder</h4><p>Cross-functional coordination between departments, leadership, and external partners.</p></div>
+    <div class="skill-card"><div class="skill-icon">🗂️</div><h4>Project Tracking</h4><p>Asana, Notion, Jira, Trello — keeping teams aligned and deliverables on track.</p></div>
+    <div class="skill-card"><div class="skill-icon">🤖</div><h4>AI-Powered Workflows</h4><p>Using Claude, ChatGPT, and Gemini to speed up research, writing, and execution.</p></div>
+    <div class="skill-card"><div class="skill-icon">🎨</div><h4>UX & Design Thinking</h4><p>Product design background that informs every system and document I build.</p></div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-label">Featured work</div>
+  <h2>Projects & case studies</h2>
+  <p class="section-intro">A mix of executive operations work, AI-assisted projects, and personal builds using Claude and Claude Code.</p>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-thumb thumb-ops">📁</div>
+      <div class="project-body">
+        <span class="project-tag">Executive Ops</span>
+        <h3>COO Support System — Anfani Travels</h3>
+        <p>Built a full executive operations system for a COO: scheduling infrastructure, correspondence templates, briefing doc formats, and cross-department communication protocols.</p>
+        <div class="project-tools"><span class="tool-pill">Google Workspace</span><span class="tool-pill">Notion</span><span class="tool-pill">Claude AI</span></div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-thumb thumb-ai">🤖</div>
+      <div class="project-body">
+        <span class="project-tag dark">AI Workflow</span>
+        <h3>AI-Augmented Research & Briefing Pipeline</h3>
+        <p>Designed a repeatable workflow using Claude and ChatGPT for executive briefings, competitive research, and meeting prep. Cut turnaround time significantly.</p>
+        <div class="project-tools"><span class="tool-pill">Claude AI</span><span class="tool-pill">ChatGPT</span><span class="tool-pill">Notion</span></div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-thumb thumb-pm">📊</div>
+      <div class="project-body">
+        <span class="project-tag">Project Management</span>
+        <h3>Remote Team Coordination — Infinion Technologies</h3>
+        <p>Managed cross-functional delivery across HR, fintech, and banking product teams. Structured documentation and workflows to keep stakeholders aligned at enterprise scale.</p>
+        <div class="project-tools"><span class="tool-pill">Jira</span><span class="tool-pill">Asana</span><span class="tool-pill">Slack</span><span class="tool-pill">Figma</span></div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-thumb thumb-code">💻</div>
+      <div class="project-body">
+        <span class="project-tag ongoing">Personal · In Progress</span>
+        <h3>Meeting Notes App — Building with Claude</h3>
+        <div class="ongoing-bar"><div class="ongoing-dot"></div><div class="ongoing-text">Currently in development</div></div>
+        <p>A personal project — building a React meeting notes application with Claude, using Claude Code end-to-end. Exploring agentic coding and what it means to build something real without a traditional developer background.</p>
+        <div class="project-tools"><span class="tool-pill">Claude</span><span class="tool-pill">Claude Code</span><span class="tool-pill">React</span><span class="tool-pill">JavaScript</span></div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-thumb thumb-ops">🗃️</div>
+      <div class="project-body">
+        <span class="project-tag">Operations</span>
+        <h3>Prospect Database — Website Design Business</h3>
+        <p>Built a 100-company prospect database in Notion and CSV for a freelance website design business targeting clients across Nigeria and the US.</p>
+        <div class="project-tools"><span class="tool-pill">Notion</span><span class="tool-pill">Claude AI</span><span class="tool-pill">Google Sheets</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-label">Work history</div>
+  <h2>Experience</h2>
+  <div class="exp-timeline">
+    <div class="exp-item">
+      <div class="exp-date">Nov 2025 – May 2026</div>
+      <div>
+        <div class="exp-role">Executive Assistant to COO</div>
+        <div class="exp-company">Anfani Travels</div>
+        <ul class="exp-bullets">
+          <li>Executive scheduling and correspondence management across competing priorities</li>
+          <li>Produced briefing docs, reports, and presentations for senior leadership</li>
+          <li>Orchestrated cross-functional communication between departments and external stakeholders</li>
+          <li>Drove operational follow-through using AI-powered productivity workflows</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date">Nov 2024 – Sept 2025</div>
+      <div>
+        <div class="exp-role">Product Designer</div>
+        <div class="exp-company">Infinion Technologies</div>
+        <ul class="exp-bullets">
+          <li>Led B2B SaaS product design across HR, fintech, banking, and government platforms at enterprise scale</li>
+          <li>Aligned C-suite, engineering, and product stakeholders on complex digital transformation initiatives</li>
+          <li>Streamlined mission-critical workflows and produced structured documentation for cross-functional delivery</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date">Feb 2024 – Oct 2024</div>
+      <div>
+        <div class="exp-role">Product Designer — Freelance</div>
+        <div class="exp-company">Independent</div>
+        <ul class="exp-bullets">
+          <li>Delivered strategic design and research support for founders across healthcare, fintech, and education</li>
+          <li>Built operational systems and workflows for distributed, remote-first teams</li>
+          <li>Deployed AI productivity tools to elevate output quality and accelerate turnaround</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date">Oct 2022 – Dec 2023</div>
+      <div>
+        <div class="exp-role">Product Designer & Virtual Assistant</div>
+        <div class="exp-company">Pitcherd, Nigeria</div>
+        <ul class="exp-bullets">
+          <li>Designed HR platforms with a focus on workflow efficiency and user-centred usability</li>
+          <li>Oversaw scheduling, cross-functional delivery oversight, and process documentation</li>
+          <li>Owned Pitcherd's digital presence: social media, company website, and Telegram community</li>
+          <li>Coordinated across remote teams, bridging product and operational needs</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date">Jun 2021 – Sept 2022</div>
+      <div>
+        <div class="exp-role">Product Designer</div>
+        <div class="exp-company">OneID, Nigeria</div>
+        <ul class="exp-bullets">
+          <li>Led full-scale redesign of company web platforms and internal systems</li>
+          <li>Aligned business objectives and product vision with C-suite and technical leadership</li>
+          <li>Managed competing priorities across a fast-paced remote environment</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tools" class="tools-section">
+  <div class="section-label">My stack</div>
+  <h2>Tools I use daily</h2>
+  <p class="section-intro">From executive productivity to AI workflows and design — this is what I actually use.</p>
+  <div class="tools-grid">
+    <div class="tool-card"><div class="t-icon">🤖</div><div class="t-name">Claude AI</div><div class="t-cat">AI</div></div>
+    <div class="tool-card"><div class="t-icon">💬</div><div class="t-name">ChatGPT</div><div class="t-cat">AI</div></div>
+    <div class="tool-card"><div class="t-icon">✨</div><div class="t-name">Gemini</div><div class="t-cat">AI</div></div>
+    <div class="tool-card"><div class="t-icon">💻</div><div class="t-name">Claude Code</div><div class="t-cat">Dev</div></div>
+    <div class="tool-card"><div class="t-icon">📓</div><div class="t-name">Notion</div><div class="t-cat">Productivity</div></div>
+    <div class="tool-card"><div class="t-icon">📊</div><div class="t-name">Asana</div><div class="t-cat">Project Mgmt</div></div>
+    <div class="tool-card"><div class="t-icon">✅</div><div class="t-name">Trello</div><div class="t-cat">Project Mgmt</div></div>
+    <div class="tool-card"><div class="t-icon">🎯</div><div class="t-name">ClickUp</div><div class="t-cat">Project Mgmt</div></div>
+    <div class="tool-card"><div class="t-icon">💼</div><div class="t-name">Slack</div><div class="t-cat">Comms</div></div>
+    <div class="tool-card"><div class="t-icon">📧</div><div class="t-name">Google Workspace</div><div class="t-cat">Productivity</div></div>
+    <div class="tool-card"><div class="t-icon">🖥️</div><div class="t-name">MS Office Suite</div><div class="t-cat">Productivity</div></div>
+    <div class="tool-card"><div class="t-icon">🎨</div><div class="t-name">Figma</div><div class="t-cat">Design</div></div>
+  </div>
+</section>
+
+<section id="contact" class="contact-bg">
+  <div class="section-label" style="color: rgba(255,255,255,0.7);">Let's work together</div>
+  <h2 style="margin-bottom: 16px;">Ready when you are.</h2>
+  <p class="contact-sub">Remote-first. Systems-minded. Available now for senior EA and Chief of Staff-adjacent roles with international founders and Series A+ startups.</p>
+  <a href="mailto:ugochidesign@gmail.com" class="contact-btn">ugochidesign@gmail.com</a>
+</section>
+
+<footer>
+  Built by <span>Ugochi Nwosu</span> · Executive Assistant · Lagos, Nigeria
+</footer>
+
+</body>
+</html>
